@@ -1,0 +1,41 @@
+<div class="bg-white p-5 min-h-screen flex flex-col items-center justify-center">
+  <div *ngIf="bookings.length === 0"
+       class="text-center text-xl text-black border border-gray-300 p-6 rounded-lg shadow">
+    No bookings available
+  </div>
+  <div *ngIf="bookings.length > 0" class="w-full">
+    <nz-table #basicTable [nzData]="bookings" [nzPageSize]="20" [nzShowPagination]="false" class="p-5">
+      <thead>
+      <tr>
+        <th class="text-left font-bold p-3 border-b border-gray-200">Client Name</th>
+        <th class="text-left font-bold p-3 border-b border-gray-200">Service</th>
+        <th class="text-left font-bold p-3 border-b border-gray-200">Date</th>
+        <th class="text-left font-bold p-3 border-b border-gray-200">Status</th>
+        <th class="text-left font-bold p-3 border-b border-gray-200">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let booking of basicTable.data" class="border-b border-gray-200">
+        <td class="font-semibold p-3">{{ booking.userName }}</td>
+        <td class="font-semibold p-3">{{ booking.serviceName }}</td>
+        <td class="p-3">{{ booking.bookDate | date : "dd/MM/yyyy" }}</td>
+        <td class="font-semibold p-3">{{ booking.reservationStatus }}</td>
+        <td class="p-3">
+            <span *ngIf="booking.reservationStatus === 'PENDING'" class="flex space-x-2">
+              <button
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold  px-3 rounded focus:outline-none focus:shadow-outline transition-all duration-200 text-sm"
+                nzSize="small" nz-button nzType="primary" (click)="changeBookingStatus(booking.id, 'Approve')">
+                Approve
+              </button>
+              <button
+                class="bg-red-600 hover:bg-red-700 text-white font-bold  px-3 rounded focus:outline-none focus:shadow-outline transition-all duration-200 text-sm"
+                nzSize="small" nz-button nzType="primary" nzDanger (click)="changeBookingStatus(booking.id, 'Reject')">
+                Reject
+              </button>
+            </span>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<body class="bg-gray-100">
+<div class="flex justify-center items-center h-screen">
+  <div class="bg-white p-10 rounded-lg shadow-xl w-11/12 md:w-1/2 lg:w-1/3">
+    <div class="text-center mb-6">
+      <h1 class="text-4xl font-bold text-gray-700">Login</h1>
+    </div>
+
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <div class="mb-6">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input a valid email!">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="email" nz-input formControlName="userName" placeholder="Email"
+                     class="w-full py-3 px-4 text-lg border-2 border-gray-300 focus:border-yellow-700 rounded-md focus:outline-none">
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div class="mb-6">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your password! (Minimum 6 characters)">
+            <nz-input-group nzPrefixIcon="lock">
+              <input type="password" nz-input formControlName="password" placeholder="Password"
+                     class="w-full py-3 px-4 text-lg border-2 border-gray-300 focus:border-yellow-700 rounded-md focus:outline-none">
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div class="flex justify-center mb-6">
+        <button nz-button
+                class="bg-yellow-700 hover:bg-green-500 text-black font-bold py-1 px-6 rounded-full focus:outline-none focus:shadow-outline transition-all duration-200"
+                [nzType]="'primary'">Log in
+        </button>
+      </div>
+
+      <div class="text-center">
+        Or <a routerLink="/register" class="text-blue-600 hover:text-blue-800 transition-colors duration-200">register
+        now!</a>
+      </div>
+    </form>
+  </div>
+</div>
+</body>

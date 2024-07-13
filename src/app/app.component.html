@@ -1,0 +1,63 @@
+<div *ngIf="!isClientLoggedIn && !isCompanyLoggedIn">
+  <header class="bg-yellow-700 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center">
+    <div class="flex items-center">
+      <img src="assets/logo.svg" alt="Logo" class="h-12 mr-4"/>
+      <h2 class="text-3xl font-bold font-chakra-petch" style="color: black;">Rapid Repair</h2>
+    </div>
+    <nav class="flex items-center">
+      <a nz-button nzType="link" routerLink="/home"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Home</a>
+      <a nz-button nzType="link" routerLink="/register"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Register</a>
+      <a nz-button nzType="link" routerLink="/login"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg">Login</a>
+    </nav>
+  </header>
+</div>
+
+<div *ngIf="isClientLoggedIn">
+  <header class="bg-yellow-700 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center">
+    <div class="flex items-center">
+      <img src="assets/logo.svg" alt="Logo" class="h-12 mr-4"/>
+      <h2 class="text-3xl font-bold font-chakra-petch" style="color: black;">Rapid Repair</h2>
+    </div>
+    <nav class="flex items-center">
+      <a nz-button nzType="link" routerLink="/home"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Home</a>
+      <a nz-button nzType="link" routerLink="/client/dashboard"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Dashboard</a>
+      <a nz-button nzType="link" routerLink="/client/bookings"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Bookings</a>
+      <a nz-button nzType="link" (click)="logout()"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg">Logout</a>
+    </nav>
+  </header>
+
+
+</div>
+
+<div *ngIf="isCompanyLoggedIn">
+  <header class="bg-yellow-700 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center">
+    <div class="flex items-center">
+      <img src="assets/logo.svg" alt="Logo" class="h-12 mr-4"/>
+      <h2 class="text-3xl font-bold font-chakra-petch" style="color: black;">Rapid Repair</h2>
+    </div>
+    <nav class="flex items-center">
+      <a nz-button nzType="link" routerLink="/home"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Home</a>
+      <a nz-button nzType="link" routerLink="/company/dashboard"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Dashboard</a>
+      <a nz-button nzType="link" routerLink="/company/ad"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Post Ad</a>
+      <a nz-button nzType="link" routerLink="/company/ads"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Ads</a>
+      <a nz-button nzType="link" (click)="logout()"
+         class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg">Logout</a>
+    </nav>
+  </header>
+
+
+</div>
+
+<router-outlet></router-outlet>
+<app-footer></app-footer>

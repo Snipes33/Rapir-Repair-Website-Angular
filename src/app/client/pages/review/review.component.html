@@ -1,0 +1,35 @@
+<div class="bg-gray-100 p-5 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-10 rounded-lg shadow-xl w-full md:w-2/3 lg:w-1/2">
+
+    <div class="text-center mb-6">
+      <h2 class="text-3xl font-bold text-black">Post Review</h2>
+    </div>
+
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="giveReview()">
+      <div class="mb-6">
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="This Input Is Required!">
+            <textarea rows="5" nz-input placeholder="Write a Review" formControlName="review"
+                      class="w-full py-3 px-4 text-lg border-2 border-gray-300 focus:border-yellow-700 rounded-md focus:outline-none"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div class="mb-6">
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="This Input Is Required!">
+            <nz-rate formControlName="rating" class="flex justify-center"></nz-rate>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div class="flex justify-center mb-6">
+        <button nz-button
+                class="bg-yellow-700 hover:bg-green-500 text-black font-bold py-1 px-6 rounded-full focus:outline-none focus:shadow-outline transition-all duration-200"
+                [nzType]="'primary'">Post
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

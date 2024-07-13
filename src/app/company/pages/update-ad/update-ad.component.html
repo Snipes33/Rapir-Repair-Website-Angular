@@ -1,0 +1,72 @@
+<div class="bg-gray-100 p-5 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-10 rounded-lg shadow-xl w-full md:w-2/3 lg:w-1/2">
+
+    <div class="text-center mb-6">
+      <h2 class="text-3xl font-bold text-black">Update Ad</h2>
+    </div>
+
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="updateAd()">
+      <div class="mb-6">
+
+        <div class="flex justify-center items-center mb-6">
+          <label for="upload_profile_image"
+                 class="bg-yellow-700 hover:bg-green-500 text-black font-bold py-1 px-6 rounded-full focus:outline-none focus:shadow-outline transition-all duration-200 cursor-pointer">
+            Choose a new image
+            <input type="file" id="upload_profile_image" accept="image/x-png,image/gif,image/jpeg"
+                   (change)="onFileSelected($event)" style="display: none"/>
+          </label>
+        </div>
+
+
+        <div *ngIf="imagePreview" class="flex justify-center mt-4">
+          <div class="w-32 h-32 rounded-full overflow-hidden">
+            <img [src]="imagePreview" alt="Selected Image" class="object-cover w-full h-full"/>
+          </div>
+        </div>
+
+
+        <div *ngIf="existingImage && !imagePreview" class="flex justify-center mt-4">
+          <div class="w-32 h-32 rounded-full overflow-hidden">
+            <img [src]="existingImage" alt="Existing Image" class="object-cover w-full h-full"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="This Input Is Required!">
+            <input nz-input placeholder="Service Name" formControlName="serviceName"
+                   class="w-full py-3 px-4 text-lg border-2 border-gray-300 focus:border-yellow-700 rounded-md focus:outline-none"/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div class="mb-6">
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="This Input Is Required!">
+            <input nz-input placeholder="Price" formControlName="price" type="number"
+                   class="w-full py-3 px-4 text-lg border-2 border-gray-300 focus:border-yellow-700 rounded-md focus:outline-none"/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div class="mb-6">
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="This Input Is Required!">
+            <textarea rows="3" nz-input placeholder="Description" formControlName="description"
+                      class="w-full py-3 px-4 text-lg border-2 border-gray-300 focus:border-yellow-700 rounded-md focus:outline-none"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div class="flex justify-center mb-6">
+        <button nz-button
+                class="bg-yellow-700 hover:bg-green-500 text-black font-bold py-1 px-6 rounded-full focus:outline-none focus:shadow-outline transition-all duration-200"
+                [nzType]="'primary'">
+          Update Ad
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
